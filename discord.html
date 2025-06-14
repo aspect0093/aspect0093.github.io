@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lunarwave | Discord</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0 15px #00ffff33;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="w-full fixed top-0 left-0 z-50 bg-black/80 shadow-lg px-6 py-4 flex items-center justify-between">
+    <div class="text-cyan-400 text-2xl font-extrabold">Lunarwave</div>
+    <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">☰</button>
+    <ul id="menu" class="hidden md:flex space-x-6 text-white text-sm font-medium">
+        <a href="index.html" class="block hover:text-cyan-400">Home</a>
+    <a href="bots.html" class="block hover:text-cyan-400">Bots</a>
+ <li><a href="discord.html" class="text-cyan-400 font-bold">Discord</a></li>
+    <a href="terms.html" class="block hover:text-cyan-400">Terms</a>
+    <a href="privacy.html" class="block hover:text-cyan-400">Privacy</a>
+  </div>
+      <li><a href="discord.html" class="text-cyan-400 font-bold">Discord</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed top-16 left-0 w-full bg-black/90 text-center hidden flex-col space-y-4 py-4 text-lg font-semibold shadow-xl md:hidden z-40">
+      <a href="index.html" class="block hover:text-cyan-400">Home</a>
+    <a href="bots.html" class="block hover:text-cyan-400">Bots</a>
+ <li><a href="discord.html" class="text-cyan-400 font-bold">Discord</a></li>
+    <a href="terms.html" class="block hover:text-cyan-400">Terms</a>
+    <a href="privacy.html" class="block hover:text-cyan-400">Privacy</a>
+  </div>
+
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let open = false;
+    menuBtn.addEventListener('click', () => {
+      open = !open;
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+  </script>
+
+  <!-- Discord Info -->
+  <section class="pt-28 px-6 text-center">
+    <h1 class="text-4xl font-extrabold text-cyan-400 mb-2">Lunarwave Discord</h1>
+    <p class="text-gray-300 mb-6 max-w-md mx-auto text-base">View our server status and join the community now.</p>
+
+    <div id="discord-card" class="card p-6 max-w-md mx-auto rounded-xl text-left space-y-4">
+      <div class="flex items-center space-x-4">
+        <img id="server-icon" src="" alt="Server Icon" class="w-16 h-16 rounded-full border border-cyan-400 shadow">
+        <div>
+          <h2 id="server-name" class="text-xl font-bold text-white">Loading...</h2>
+          <p id="member-count" class="text-gray-400 text-sm">Fetching member count...</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="https://discord.gg/your-invite-code" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-2 rounded-full shadow-md transition">Join Server</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-600 text-sm py-6 mt-16 border-t border-gray-800">
+    © 2025 Lunarwave. All rights reserved.
+  </footer>
+
+  <!-- Discord API Script -->
+  <script>
+    const serverID = "1331113650961776670"; // Replace this
+    const inviteCode = "TYMVHDZ3T8"; // Replace this
+    const iconEl = document.getElementById("server-icon");
+    const nameEl = document.getElementById("server-name");
+    const countEl = document.getElementById("member-count");
+
+    // Uses invite widget (needs to be enabled in Discord settings)
+    fetch(`https://discord.com/api/v9/invites/${inviteCode}?with_counts=true`)
+      .then(res => res.json())
+      .then(data => {
+        nameEl.textContent = data.guild.name;
+        iconEl.src = `https://cdn.discordapp.com/icons/${data.guild.id}/${data.guild.icon}.webp?size=128`;
+        countEl.textContent = `${data.approximate_presence_count} online / ${data.approximate_member_count} members`;
+      })
+      .catch(err => {
+        nameEl.textContent = "Unable to fetch server data.";
+        countEl.textContent = "Make sure your invite is valid.";
+      });
+  </script>
+
+</body>
+</html>>

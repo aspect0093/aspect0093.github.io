@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lunarwave | Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .glow-text {
+      background: linear-gradient(to right, #00ffff, #0077ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 3s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .stars {
+      background: transparent;
+      width: 100%;
+      height: 300px;
+      background: radial-gradient(ellipse at bottom, #111 0%, #000 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stars::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: transparent;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 10px 10px;
+      animation: moveStars 100s linear infinite;
+      opacity: 0.1;
+    }
+
+    @keyframes moveStars {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-50%, -50%); }
+    }
+
+    .moon {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #00ffff 0%, #0077ff 100%);
+      border-radius: 50%;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 40px #00ffffaa;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-15px); }
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <!-- Navbar -->
+  <nav class="w-full fixed top-0 left-0 z-50 bg-black/80 shadow-lg px-6 py-4 flex items-center justify-between">
+    <div class="text-cyan-400 text-2xl font-extrabold">Lunarwave</div>
+    <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none transition transform">
+      ☰
+    </button>
+    <ul id="menu" class="hidden md:flex space-x-6 text-white text-sm font-medium">
+      <li><a href="index.html" class="hover:text-cyan-400">Home</a></li>
+      <li><a href="bots.html" class="hover:text-cyan-400">Bots</a></li>
+ <li><a href="discord.html" class="text-cyan-400 font-bold">Discord</a></li>
+      <li><a href="terms.html" class="hover:text-cyan-400">Terms</a></li>
+      <li><a href="privacy.html" class="hover:text-cyan-400">Privacy</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Slide Menu -->
+  <div id="mobile-menu" class="fixed top-16 left-0 w-full bg-black/90 text-center hidden flex-col space-y-4 py-4 text-lg font-semibold shadow-xl md:hidden z-40">
+    <a href="index.html" class="block hover:text-cyan-400">Home</a>
+    <a href="bots.html" class="block hover:text-cyan-400">Bots</a>
+ <li><a href="discord.html" class="text-cyan-400 font-bold">Discord</a></li>
+    <a href="terms.html" class="block hover:text-cyan-400">Terms</a>
+    <a href="privacy.html" class="block hover:text-cyan-400">Privacy</a>
+  </div>
+
+  <!-- JS for Menu Toggle -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let open = false;
+    menuBtn.addEventListener('click', () => {
+      open = !open;
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+  </script>
+
+  <!-- Hero Section -->
+  <section class="pt-28 px-6 text-center">
+    <h1 class="text-4xl font-extrabold glow-text mb-4">Welcome to Lunarwave</h1>
+    <p class="text-gray-300 max-w-md mx-auto text-base">Explore our futuristic, premium Discord bots crafted for support, engagement, and server automation.</p>
+    <div class="mt-6">
+      <a href="bots.html" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition duration-300 hover:scale-105">Explore Bots</a>
+    </div>
+  </section>
+
+  <!-- Aesthetic Area -->
+  <section class="stars relative mt-16 rounded-xl overflow-hidden shadow-inner">
+    <div class="moon"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-600 text-sm py-6 mt-16 border-t border-gray-800">
+    © 2025 Lunarwave. All rights reserved
+  </footer>
+
+</body>
+</html>>800">
+    © 2025 Lunarwave. All rights reserved. Contact via Discord or Email (coming soon).
+  </footer>
+
+</body>
+</html> reserved. Contact via Discord or Email (coming soon).
+  </footer>
+
+</body>
+</html>
